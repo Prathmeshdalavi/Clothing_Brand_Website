@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { @apply bg-ivory text-charcoal font-sans antialiased; overflow-x: hidden; }
+  h1, h2, h3, h4 { @apply font-display text-navy; }
+  :focus-visible { outline: 2px solid #243B53; outline-offset: 2px; }
+  ::selection { background: #B8DCE8; color: #243B53; }
+  img, svg { max-width: 100%; }
+  input, select, textarea { font: inherit; }
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-[1320px] px-4 sm:px-6 lg:px-10; }
+  .btn { @apply inline-flex items-center justify-center gap-2 h-12 px-7 text-sm font-medium tracking-wide rounded-sm transition-all duration-300 select-none disabled:opacity-45 disabled:cursor-not-allowed whitespace-nowrap; }
+  .btn-primary { @apply bg-navy text-ivory hover:bg-navy-700 active:scale-[.98]; }
+  .btn-light { @apply bg-pastel text-navy hover:bg-pastel-400; }
+  .btn-outline { @apply border border-navy text-navy hover:bg-navy hover:text-ivory; }
+  .btn-ghost { @apply text-navy hover:bg-mist; }
+  .btn-sm { @apply h-10 px-4 text-[13px]; }
+  .eyebrow { @apply text-[11px] font-medium uppercase tracking-[.22em] text-navy-500; }
+  .field { @apply w-full h-12 bg-white border border-mist rounded-sm px-4 text-sm text-charcoal placeholder:text-charcoal/40 transition focus:border-navy focus:outline-none focus:ring-2 focus:ring-pastel; }
+  .field-err { @apply border-red-500 focus:border-red-500 focus:ring-red-100; }
+  .label { @apply block text-xs font-medium text-navy mb-1.5; }
+  .card { @apply bg-white rounded-sm shadow-soft; }
+  .link-u { @apply underline underline-offset-4 decoration-pastel-400 hover:decoration-navy transition; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; }
+}
+
+@media print {
+  body * { visibility: hidden; }
+  #invoice, #invoice * { visibility: visible; }
+  #invoice { position: absolute; left: 0; top: 0; width: 100%; }
+}
